@@ -1,0 +1,75 @@
+hr {
+  width: 100%;
+  margin-top: 10px;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+
+  .filters {
+    display: flex;
+    gap: 10px;
+    p {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      border: 2px solid black;
+      border-radius: 50px;
+      padding: 5px 20px;
+    }
+  }
+  .postJobButton {
+    color: white;
+    border: 2px solid black;
+    background-color: blue;
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    margin-top: 16px;
+    height: 30px;
+    padding: 5px 20px;
+  }
+}
+.left {
+  max-height: 700px;
+  overflow-y: scroll;
+
+  .job-card {
+    margin: 5px;
+  }
+}
+
+.nav {
+    transition: filter 0.3s ease;
+}
+
+.nav.blur {
+    filter: blur(5px);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    .form-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      width: 50%;
+      height: 60%;
+      text-align: center;
+  }
+}
+
+
+

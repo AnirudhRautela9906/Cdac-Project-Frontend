@@ -1,0 +1,45 @@
+/* Slider.css */
+
+.toggle-button {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .open-slider-btn{
+    cursor: pointer;
+  }
+  .slider {
+    position: fixed;
+    right: -250px;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #333;
+    transition: right 0.3s ease-in-out;
+    padding-top: 60px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .slider.open {
+    right: 0;
+  }
+  
+  .slider-button {
+    display: block;
+    background-color: #444;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  .slider-button:hover {
+    background-color: #555;
+  }
+  

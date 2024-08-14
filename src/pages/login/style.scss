@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Marck+Script&family=Poppins:ital,wght@0,300;1,700&display=swap");
+
+.loginBox {
+  width: 730px;
+  border: 2px solid lightgrey;
+  height: auto;
+  margin: 0 auto 100px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px 0px;
+  align-items: center;
+  border-radius: 15px;
+
+  .inputContainer {
+    width: 614px;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      color: black;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      width: auto;
+      margin-bottom: 8px; // Adds spacing between label and input field
+    }
+
+    .inputWrapper {
+      display: flex;
+      align-items: center;
+      border: 1px solid lightgrey; // Adds border around the entire input and image container
+      border-radius: 15px; // Optional: adds rounded corners
+      padding: 0 10px; // Adds padding around the input and image
+      background-color: #fff; // Optional: background color inside the border
+
+      input {
+        border: none; // Removes the border from the input itself
+        outline: none;
+        width: 100%; // Full width within the inputWrapper
+        height: 60px;
+        padding: 0 10px; // Adds padding inside the input field
+        font-size: 16px; // Adjust font size as needed
+        font-family: "Poppins", sans-serif;
+        box-sizing: border-box; // Ensures padding and border are included in width
+      }
+
+      img {
+        height: 30px;
+        margin-left: 10px; // Space between input and icon
+      }
+    }
+  }
+  .loginButtonBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    button{
+        width: 256px;
+        height: 59px;
+        background-color: #21b414;
+        border-radius: 10px;
+        border: none;
+        color: #fff;
+        font-size: 16px; // Adjust font size as needed
+        font-family: "Poppins", sans-serif;
+        cursor:pointer;
+    }
+    div{
+        font-size: 16px; // Adjust font size as needed
+        font-family: "Poppins", sans-serif;
+        padding-bottom: 0px;
+    }
+  }
+  .SignupButtonBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    button{
+        width: 256px;
+        height: 59px;
+        background-color: #fff;
+        border-radius: 10px;
+        border: none;
+        color: #21b414; 
+        font-size: 16px; // Adjust font size as needed
+        font-family: "Poppins", sans-serif;
+        border: 2px solid #21b414; 
+        cursor: pointer;
+    }
+    p{
+        font-size: 16px; // Adjust font size as needed
+        font-family: "Poppins", sans-serif;
+        padding-top: 0px;
+    }
+  }
+}
+
+.p1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 35px;
+  color: #21b414;
+  text-align: center;
+  line-height: 52.5px;
+}

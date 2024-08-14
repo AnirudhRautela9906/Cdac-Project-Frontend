@@ -1,0 +1,55 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Poppins:ital,wght@0,300;1,700&display=swap');
+
+
+#footer{
+    padding: 5px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    p{
+        font-family: "Marck Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 25px;
+    }
+    #follow{
+        font-family: "Poppins", sans-serif;
+        font-weight: bolder;
+        display: inline;
+        
+    }
+    img{
+        
+        height: 30px;
+    }
+    #social{
+        display: flex;
+        align-items:center ;
+        justify-content: center;
+        margin-top: -27px;
+        gap: 15px;
+        div{
+            display: flex;
+            gap: 3px;
+        }
+    }
+    #sign{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        ul{
+            padding-inline-start: 20px;
+        }
+        img{
+            margin-right: 10px;
+        }
+        p{
+            font-family: "Poppins", sans-serif;
+        
+        display: inline;
+        
+        }
+    }
+}

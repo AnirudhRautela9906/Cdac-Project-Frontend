@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Semi+Condensed:wght@100&display=swap");
+.navLogo{
+  margin-left: 0px;
+  img{
+    
+    width: 60px;
+    height: 60px;
+  }
+}
+.nav1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  .profilePic{
+    border-radius: 100px;
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+  }
+  .nav1-1 {
+    display: flex;
+    width: 110px;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      padding: 10px;
+      &:hover {
+        color: green;
+      }
+    }
+    img{
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .nav1-p {
+    display: flex;
+    flex-direction: column;
+
+    width: 100px;
+    justify-content: space-between;
+    padding: 10px 10px;
+    position: relative; // Ensure dropdown is positioned relative to this container
+
+    // Targeting the link inside .nav1-p on hover of .nav1-p
+    &:hover a {
+      transform: translateX(
+        50px
+      ); // Moves the link to the right by 50px on hover
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      transition: transform 0.3s ease; // Smooth transition effect
+    }
+  }
+  .nav1-2 {
+    padding: 10px 0px;
+    text-decoration: none;
+    display: flex;
+    width: 159px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+
+    > :nth-child(2) {
+      background-color: black;
+      color: white;
+      border-radius: 5px;
+      padding: 12px 12px;
+      &:hover {
+        background-color: #21b414;
+        color: white;
+      }
+    }
+    
+    a {
+      color: black;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      &:hover {
+        color: green;
+      }
+    }
+  }
+}
