@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 import logo from "../../Home_images/logo.png";
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch,useSelector } from "react-redux";
-import "./Style.scss";
+import "./Navbar.scss";
 import "./RightSlider.css";
 import './NotificationBell.css';
 import { logout } from "../../redux/actions/userActions";
 import toast from 'react-hot-toast';
-import { LOGIN_REQUEST, LOGOUT_FAIL } from "../../redux/constants/userConstants";
+import { LOGIN_REQUEST } from "../../redux/constants/userConstants";
+import { useNavigate } from "react-router-dom";
 
 const NavbarProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const nav = useNavigate();
   const [isNotiOpen, setNotiIsOpen] = useState(false);
   const dispatch = useDispatch();
   const toggleSlider = () => {
@@ -31,7 +33,15 @@ const NavbarProfile = () => {
       setNotiIsOpen(false);
     }
   };
-  const {error,loading,isAuthenticated,Name,isloggedOut} = useSelector((state) => state.user)
+  const {error,isAuthenticated} = useSelector((state) => state.user)
+  function loadJobsPosted() {
+    toggleSlider()
+    nav("/profile/jobsPosted")
+  }
+  function loadHome() {
+    toggleSlider()
+    nav("/profile")
+  }
   function logoutUser() {
     toggleSlider()
     dispatch(logout());   
@@ -94,7 +104,8 @@ const NavbarProfile = () => {
                 x
               </button>
               <button className="slider-button" onClick={toggleSlider}>Account</button>
-              <button className="slider-button" onClick={toggleSlider}>Jobs Posted</button>
+              <button className="slider-button" onClick={loadHome}>Home</button>
+              <button className="slider-button" onClick={loadJobsPosted}>Jobs Posted</button>
               <button className="slider-button" onClick={toggleSlider}>Jobs Applied</button>
               <button className="slider-button" onClick={ logoutUser} >Logout</button>
             </div>

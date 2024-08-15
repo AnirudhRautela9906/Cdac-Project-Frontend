@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../../Home_images/logo.png'
-import  "./Style.scss"
+import  "./Navbar.scss"
 import { useNavigate } from 'react-router-dom'
 const NavbarLogin = () => {
    const navigate = useNavigate();

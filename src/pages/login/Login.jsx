@@ -3,7 +3,7 @@ import Footer from '../../components/footerLogin/Footer'
 import NavbarLogin from '../../components/navbar/NavbarLogin'
 import User from './../../Home_images/Username.svg'
 import toast from 'react-hot-toast';
-import './style.scss'
+import './Login.scss'
 import Lock from './../../Home_images/Password.svg'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';

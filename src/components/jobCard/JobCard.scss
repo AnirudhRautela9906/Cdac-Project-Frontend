@@ -30,7 +30,7 @@
     }
     .secondBox{
         border: 2px solid grey;
-        width: 460px;
+        width: 100%;
         margin: auto;
         height: auto;
         border-radius: 15px;
@@ -38,3 +38,9 @@
     }
 
 }
+
+.borderGreen{
+    border: 2px solid lightgreen;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.8);
+  }

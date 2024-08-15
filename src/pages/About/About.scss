@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Semi+Condensed:wght@100&display=swap");
+
+$primary-color: #2c3e50;
+$secondary-color: #e74c3c;
+$background-color: #ecf0f1;
+$text-color: #34495e;
+$container-max-width: 1200px;
+
+.about-page {
+  font-family: 'Poppins', sans-serif;
+  color: $text-color;
+  background-color: $background-color;
+  padding: 0;
+
+  .about-hero {
+    background: url('./backGround.svg') no-repeat center center/cover;
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+
+    .hero-content {
+      max-width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 2.25rem;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .about-section {
+    padding: 60px 20px;
+
+    .container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-radius: 15px;
+
+      .about-text {
+        max-width: 70%;
+        margin-bottom: 40px;
+    
+        h2 {
+          font-size: 2.5rem;
+          color: $secondary-color;
+          margin-bottom: 20px;
+        }
+
+        p {
+          font-size: 1.125rem;
+          line-height: 1.8;
+        }
+      }
+
+      .about-image {
+        img {
+          width: 100%;
+          max-width: 90%;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          margin-bottom: 30px;
+        }
+      }
+    }
+  }
+
+  .team-section {
+    background-color: #fff;
+    padding: 60px 20px;
+
+    .container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+      text-align: center;
+
+      h2 {
+        font-size: 2.5rem;
+        color: $primary-color;
+        margin-bottom: 40px;
+      }
+
+      .team-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+
+        .team-card {
+          background: #fff;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          width: 200px;
+          text-align: center;
+
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+          }
+
+          h3 {
+            margin: 10px 0;
+            font-size: 1.25rem;
+          }
+
+          p {
+            color: $secondary-color;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .about-footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+
+    .container {
+      max-width: $container-max-width;
+      margin: 0 auto;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+  }
+}

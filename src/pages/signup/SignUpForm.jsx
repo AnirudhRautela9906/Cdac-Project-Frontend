@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { postApi } from "../../services/ApiConfig";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../../redux/userSlice";
 import {register} from "../..//redux/actions/userActions"
 import { LOGIN_REQUEST } from "../../redux/constants/userConstants";
 const SignUpForm = () => {

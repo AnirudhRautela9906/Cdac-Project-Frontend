@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import './Style.scss'
+import './Home.scss'
 import jobPoster from '../../Home_images/jobPoster.png'
 import jobSeeker from '../../Home_images/jobSeeker.png'
 import Footer from '../../components/footer/Footer'
@@ -24,7 +24,7 @@ const Home = () => {
     <hr />
     <p className='p1'>Why to worry when a Seeker is Ready !!</p>
     
-    <div className='parallel'>  
+    <div className='home parallel'>  
         <div className='box1' onClick={()=>{nav("/Login")}}>
           <button className='box'>
             <img src={jobPoster} alt="jobPoster"/>
