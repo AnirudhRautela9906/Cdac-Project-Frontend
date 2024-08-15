@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Footer from '../../components/footerLogin/Footer'
-import NavbarLogin from '../../components/navbar/NavbarLogin'
+// import NavbarLogin from '../../components/navbar/NavbarLogin'
 import User from './../../Home_images/Username.svg'
 import toast from 'react-hot-toast';
 import './Login.scss'
@@ -56,7 +56,7 @@ const Login = () => {
   },[loading, body, error, isAuthenticated, Name, navigate, dispatch])
   return (
     <>
-      <NavbarLogin/> 
+      {/* <NavbarLogin/>  */}
       <p className='p1'>Log in to Seeker</p>      
       <div className='loginBox'>
         <div className='inputContainer'>

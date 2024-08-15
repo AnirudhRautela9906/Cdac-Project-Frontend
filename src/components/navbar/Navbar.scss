@@ -1,10 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans+Semi+Condensed:wght@100&display=swap");
 .navLogo{
+  cursor: pointer;
   margin-left: 0px;
   img{
     
+
     width: 60px;
     height: 60px;
+  }
+}
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  button{
+    border:none;
+    background-color: white;
+    color: #4CAF50;
+    margin-right:   12%;
+    font-size: 35px;
+    cursor: pointer;
   }
 }
 .nav1 {
@@ -36,6 +51,7 @@
     img{
       width: 60px;
       height: 60px;
+      cursor: pointer;
     }
   }
   .nav1-p {

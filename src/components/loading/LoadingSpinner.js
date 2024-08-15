@@ -12,7 +12,7 @@ const LoadingSpinner = () => {
       </div>
       <div className="mouth"></div>
     </div>
-    <p>Loading...</p>
+    <p className='loadingText'>Loading...</p>
   </div>
   );
 };

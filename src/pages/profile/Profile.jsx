@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavbarProfile from "../../components/navbar/NavbarProfile.jsx";
+// import NavbarProfile from "../../components/navbar/NavbarProfile.jsx";
 import "./Profile.scss";
 import DownArrow from "../../Home_images/Down Icon.svg";
 import FilterIcon from "../../Home_images/Filter Icon.svg";
@@ -59,7 +59,7 @@ const Profile = () => {
       {/* No Jobs Found */}
       <Loading/>
      </div> :  <div>
-      <NavbarProfile />
+      {/* <NavbarProfile /> */}
       <hr />
       <div className="nav">
         <div className="filters">

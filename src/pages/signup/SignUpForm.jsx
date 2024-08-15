@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./SignUpForm.scss";
 import bgImage from "../../Home_images/SignUp_page_background.png";
-import Logo from "../../components/navbar/NavbarLogin";
+// import Logo from "../../components/navbar/NavbarLogin";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { postApi } from "../../services/ApiConfig";
@@ -62,7 +62,7 @@ const SignUpForm = () => {
   },[loading, error, isAuthenticated, Name, nav, dispatch])
   return (
     <>
-      <div className="nav">
+      {/* <div className="nav">
         <Logo />
         <button
           onClick={() => {
@@ -72,6 +72,7 @@ const SignUpForm = () => {
           Log in
         </button>
       </div>
+       */}
 
       <div className="container">
         <div className="form-container">

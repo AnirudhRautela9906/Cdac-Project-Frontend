@@ -75,7 +75,7 @@ export const login = (email,password)=> async (dispatch) =>{
  const config = {headers: {"Content-Type": "application/json"},withCredentials: true}
 
         const {data} = await axios.post(url+`/login`,{email,password},config)
-        console.log(data)
+        // console.log(data)
         dispatch({
             type:LOGIN_SUCCESS,
             payload:data
@@ -121,7 +121,7 @@ export const loadUser = ()=> async (dispatch) =>{
     try {
         dispatch({ type:LOAD_USER_REQUEST })
         const config = {headers: {"Content-Type": "application/json"},withCredentials: true}
-
+// No body in Get 
         const {data} = await axios.get(url+`/me`,config)
         
         dispatch({
@@ -129,7 +129,7 @@ export const loadUser = ()=> async (dispatch) =>{
             payload:data
         })
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         dispatch({
             type: LOAD_USER_FAIL,
             payload: error.response.data.message,
@@ -137,6 +137,7 @@ export const loadUser = ()=> async (dispatch) =>{
 
     }
 }
+
 
 //    All Users -- Admin
 
@@ -252,6 +253,8 @@ export const logout = (body)=> async (dispatch) =>{
 
   }
 
+
+  
   // Update Profile
   export const updateProfile = (userData)=> async (dispatch) =>{
 

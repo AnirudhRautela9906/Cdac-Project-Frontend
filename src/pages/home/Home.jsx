@@ -20,7 +20,7 @@ const Home = () => {
     
   return (
     <>
-    <Navbar />
+    {  /* <Navbar /> */}
     <hr />
     <p className='p1'>Why to worry when a Seeker is Ready !!</p>
     

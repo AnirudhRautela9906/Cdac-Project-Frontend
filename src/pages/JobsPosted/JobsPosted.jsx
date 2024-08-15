@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import NavbarProfile from "../../components/navbar/NavbarProfile";
+// import NavbarProfile from "../../components/navbar/NavbarProfile";
 import DownArrow from "../../Home_images/Down Icon.svg";
 import FilterIcon from "../../Home_images/Filter Icon.svg";
 import {  useSelector } from "react-redux";
@@ -24,7 +24,7 @@ const JobsPosted = () => {
   }, []);
     return (
         <>
-          <NavbarProfile />
+          {/* <NavbarProfile /> */}
           <hr />
           <div className="nav">
             <div className="filters">
