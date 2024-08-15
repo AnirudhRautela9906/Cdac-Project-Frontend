@@ -9,14 +9,17 @@ import { useDispatch, useSelector } from "react-redux";
 import PostJobForm from "../../components/postJobForm/PostJobForm.jsx";
 import JobDescriptionCard from "../../components/jobDescriptionCard/JobDescriptionCard.js";
 import { loadJobs } from "../../redux/actions/jobActions.js";
-
+import toast from 'react-hot-toast';
+import Loading from "../../components/loading/LoadingSpinner.js"
 
 const Profile = () => {
   const dispatch = useDispatch();
   // console.log("jknjk")
   
   const {isAuthenticated ,user } = useSelector((state) => state.user);
-  const {jobs ,loading} = useSelector((state) => state.job);
+  const {jobs ,loading,jobCreated,jobApplied, error} = useSelector((state) => state.job);
+
+
   const [jobsList, setJobsList] = useState([]);
   const [filter, setFilters] = useState("none");
   const [showFilters, setShowFilters] = useState(false);
@@ -31,22 +34,31 @@ const Profile = () => {
     setIsFormVisible(true);
   };
 
-  // Function to handle form submission
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    // Add your form submission logic here
 
-    // Hide the form after submission
-    setIsFormVisible(false);
-  };
   useEffect(() => {
- 
     dispatch(loadJobs())
-    // console.log(jobs)
-  }, [dispatch])
+ 
+
+
+    if(error){
+      toast.error(error);
+    }
+    else if(jobCreated)
+      {
+        toast.success("Created Successfully !");
+      }
+      else if(jobApplied)
+        {
+          toast.success("Applied Successfully !");
+        }
+
+  }, [dispatch, error, jobApplied, jobCreated])
   // console.log(loading);
   return (<>
-     {loading ? <div>No Jobs Found</div> :  <div>
+     {loading ? <div>
+      {/* No Jobs Found */}
+      <Loading/>
+     </div> :  <div>
       <NavbarProfile />
       <hr />
       <div className="nav">
@@ -118,7 +130,9 @@ const Profile = () => {
       </div>
       <div className="profile parallel">
         <div className="left">
-          {jobs && jobs.map((job, index) => {
+          {jobs && jobs
+          .filter((job)=> job.creator.email!=user.email)
+          .map((job, index) => {
            
             // if (
             //   (filter === "area" &&
@@ -132,7 +146,7 @@ const Profile = () => {
               //   user.address.state === job.jobLocation.state) ||
               // filter === "none" && job.creator.email !== user.email
             // )
-             {
+            //  {
               return (
                 <JobCard
                   key={job.jobId}
@@ -151,11 +165,12 @@ const Profile = () => {
                 />
               );
             }
-          })}
+          // }
+          )}
         </div>
         <div className="right">
           {jobs && jobs.map((job, index) => {
-            if (job.jobId === selectedJob) {
+                   if (job.jobId === selectedJob) {
               return (
                 <JobDescriptionCard
                   key={job.jobId}

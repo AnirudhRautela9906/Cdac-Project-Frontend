@@ -83,7 +83,7 @@ export const login = (email,password)=> async (dispatch) =>{
     } catch (error) {
         dispatch({
             type: LOGIN_FAIL,
-            payload: error,
+            payload: error.response.data.message,
         })
         
     }
@@ -107,7 +107,7 @@ export const login = (email,password)=> async (dispatch) =>{
     } catch (error) {
         dispatch({
             type: REGISTER_USER_FAIL,
-            payload: error,
+            payload: error.response.data.message,
            
         })
     }
@@ -232,12 +232,12 @@ export const getUserDetails = (id)=> async (dispatch) =>{
 
 //    Logout User
 
-export const logout = ()=> async (dispatch) =>{
+export const logout = (body)=> async (dispatch) =>{
 
     try {
 
         const config = {headers: {"Content-Type": "application/json"},withCredentials: true}
-        const {data} =   await axios.get(url+`/logout`,config)
+        const {data} =   await axios.post(url+`/logout`,body,config)
         
         dispatch({
             type:LOGOUT_SUCCESS,payload:data

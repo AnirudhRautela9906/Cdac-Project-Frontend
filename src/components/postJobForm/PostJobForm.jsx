@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './PostJobForm.scss'
 import { useSelector,useDispatch } from "react-redux";
 import toast from 'react-hot-toast';
 import { postApi } from "../../services/ApiConfig";
-import { loadJobs } from "../../redux/actions/jobActions";
+import { createJob, loadJobs } from "../../redux/actions/jobActions";
 
 
 const PostJobForm = ({setIsFormVisible}) => {
     const {user} = useSelector(state => {return state.user});
+
   const dispatch = useDispatch();
 
     const [obj, setObj] = useState({
@@ -16,22 +17,15 @@ const PostJobForm = ({setIsFormVisible}) => {
         price:"",
         jobLocation: user.address
       });
+
+
       const onRegister = (event) => {
 
         event.preventDefault();
         setIsFormVisible(false)
-        postApi("http://localhost:8080/seeker/job/create", obj).then((res)=>{
-          toast.success(`Job created successfully !`);
-
-
-        }).catch((error)=>{
-            console.log(error);
-          toast.error(error.response.data.message)
-        });
-    dispatch(loadJobs())
-
+        dispatch(createJob(obj)) 
       };
-console.log(obj);
+
   return (
     <form onSubmit={onRegister}>
       <div className="form-group">

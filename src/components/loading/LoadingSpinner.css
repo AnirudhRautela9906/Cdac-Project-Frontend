@@ -1,0 +1,66 @@
+/* EnhancedCartoonLoader.css */
+
+.enhanced-cartoon-loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f0f0f0; /* Light background color */
+  font-family: Arial, sans-serif; /* Font for loading text */
+}
+
+.cartoon-character {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #ff6f61; /* Bright color for the character */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce-spin 1.5s infinite ease-in-out;
+}
+
+.eyes {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+}
+
+.eye {
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.mouth {
+  position: absolute;
+  bottom: 20%;
+  width: 60%;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+@keyframes bounce-spin {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-50px) rotate(360deg);
+  }
+  100% {
+    transform: translateY(0) rotate(720deg);
+  }
+}
+
+p {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+}
