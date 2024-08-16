@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import './PostJobForm.scss'
 import { useSelector,useDispatch } from "react-redux";
 import toast from 'react-hot-toast';
@@ -17,7 +17,7 @@ const PostJobForm = ({setIsFormVisible}) => {
         price:"",
         jobLocation: user.address
       });
-
+      const formRef = useRef(null);
 
       const onRegister = (event) => {
 
@@ -25,11 +25,22 @@ const PostJobForm = ({setIsFormVisible}) => {
         setIsFormVisible(false)
         dispatch(createJob(obj)) 
       };
-
+      const handleClickOutside = (event) => {
+        if (formRef.current && !formRef.current.contains(event.target)) {
+          setIsFormVisible(false); // Hide the form when clicking outside
+        }
+      };
+      useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+        };
+      }, []);
   return (
-    <form onSubmit={onRegister}>
+    <div className="main-container">
+    <form ref={formRef} onSubmit={onRegister}>
       <div className="form-group">
-        <label htmlFor="job-name">Give a Title to Your Job</label>
+        <label htmlFor="job-name">Give a Title to Your Job *</label>
         <input
           type="text"
           id="job-name"
@@ -39,16 +50,17 @@ const PostJobForm = ({setIsFormVisible}) => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="job-desc">Job Description</label>
+        <label htmlFor="job-desc">Please Describe your Job *</label>
         <textarea
-          id="job-desc"
-          name="job-desc"
+            id="job-desc"
+            name="job-desc"
+            className="jobDesc"
           required
           onChange={(event) =>  { setObj((prev)=> ({...prev,longDesc:event.target.value}))  } }
         />
       </div>
       <div className="form-group">
-        <label htmlFor="coins">Price</label>
+        <label htmlFor="coins">Amount *</label>
         <input
           type="text"
           id="coins"
@@ -57,8 +69,9 @@ const PostJobForm = ({setIsFormVisible}) => {
           onChange={(event) =>  { setObj((prev)=> ({...prev,price:event.target.value}))  } }
         />
       </div>
-      <button type="submit" >Submit</button>
+      <button  className="submitButton" type="submit" >Submit</button>
     </form>
+      </div>
   );
 };
 

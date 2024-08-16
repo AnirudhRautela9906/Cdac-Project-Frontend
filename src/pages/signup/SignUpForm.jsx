@@ -47,14 +47,14 @@ const SignUpForm = () => {
       {
         if(error){
           toast.error("Invalid Email or Password");
-          dispatch({ type:LOGIN_REQUEST })
+        
         }
         else if(isAuthenticated)
         {
-          toast.success(`Welcome ${Name}`);
-          setTimeout(() => {
+        
+          // setTimeout(() => {
             nav('/profile')
-        }, 500);
+        // }, 500);
         }
         
       }

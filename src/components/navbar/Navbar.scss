@@ -28,11 +28,13 @@
   justify-content: space-between;
   
   .profilePic{
-    border-radius: 100px;
-    border: 2px solid black;
-    width: 50px;
+    // border-radius: 100px;
+    // border: 2px solid black;
+    // width: 50px;
     height: 50px;
     margin-top: 10px;
+    color: white;
+    background-color: black;
   }
   .nav1-1 {
     display: flex;

@@ -8,15 +8,18 @@ import { logout } from "../../redux/actions/userActions";
 import "./RightSlider.css";
 import "./NotificationBell.css";
 import "./Navbar.scss";
+import toast from 'react-hot-toast';
+
+
 const Navbar = () => {
   const [activeLogSign, setActiveLogSign] = useState(false);
   const [activeLog, setActiveLog] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const {error,  isAuthenticated,loading } = useSelector((state) => state.user);
+  const {error,user,  isloggedOut,loading,isAuthenticated,isLoggedIn,Name } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/" || location.pathname === "/About" || location.pathname === "/Contact" ) {
       setActiveLogSign(true);
     }
     else{
@@ -28,7 +31,14 @@ const Navbar = () => {
     else{
       setActiveLog(false);
     }
-  }, [location.pathname]);
+    if(isLoggedIn)
+      {
+        toast.success(`Welcome ${Name}`);
+        
+        // setTimeout(() => {
+      // }, 500);
+      }
+  }, [location.pathname, isLoggedIn, Name]);
 
   const [isOpen, setIsOpen] = useState(false);
   const nav = useNavigate();
@@ -79,15 +89,17 @@ const Navbar = () => {
     //   toast.error(error);
     //   dispatch({ type: LOGIN_REQUEST });
     // }
-    //  else if (!isAuthenticated) {
-    //   toast.success("SEE YOU SOON");
-    // }
-  }, [dispatch, error, isAuthenticated, isNotiOpen]);
+    //  else 
+    if (isloggedOut) {
+      toast.success("SEE YOU SOON");
+    }
+  }, [dispatch, error, isloggedOut, isNotiOpen]);
 
 
   return (
     <>
-      {!loading && <div className="nav1">
+      {/* {!loading && <div className="nav1"> */}
+      {<div className="nav1">
         <div className="nav1-1">
           <img
             src={logo}
@@ -99,7 +111,7 @@ const Navbar = () => {
           <Link to="/About">About</Link>
           <Link to="/Contact">Contact</Link>
         </div>
-        {activeLogSign && (
+        {activeLogSign && !isAuthenticated && (
           <div className="nav1-2">
             <Link to="/Login">Log in</Link>
             <Link to="/Signup">Sign Up</Link>
@@ -135,7 +147,7 @@ const Navbar = () => {
             )}
           </div>
           <button onClick={toggleSlider} className="open-slider-btn profilePic">
-            Profile
+            {user.name}
           </button>
 
           <div className={`slider ${isOpen ? "open" : ""}`}>
@@ -147,9 +159,9 @@ const Navbar = () => {
               <button className="slider-button" onClick={toggleSlider}>
                 x
               </button>
-              <button className="slider-button" onClick={toggleSlider}>
+              {/* <button className="slider-button" onClick={toggleSlider}>
                 Account
-              </button>
+              </button> */}
               <button className="slider-button" onClick={loadHome}>
                 Home
               </button>
@@ -158,6 +170,9 @@ const Navbar = () => {
               </button>
               <button className="slider-button" onClick={toggleSlider}>
                 Jobs Applied
+              </button>
+                <button className="slider-button" onClick={toggleSlider}>
+                Transaction History
               </button>
               <button className="slider-button" onClick={logoutUser}>
                 Logout

@@ -34,21 +34,21 @@ const Login = () => {
     
   }
 
-  const {error,loading,isAuthenticated,Name,isloggedOut} = useSelector((state) => state.user)
+  const {error,loading,Name,isLoggedIn,isAuthenticated} = useSelector((state) => state.user)
   useEffect(()=>{
     // console.log(body,loading);
     if(!loading )
       {      
         if(error){
           toast.error("Invalid Email or Password");
-          dispatch({ type:LOGIN_REQUEST })
+          // dispatch({ type:LOGIN_REQUEST })
         }
         else if(isAuthenticated)
         {
-          toast.success(`Welcome ${Name}`);
-          setTimeout(() => {
+          // toast.success(`Welcome ${Name}`);
+          // setTimeout(() => {
             navigate('/profile')
-        }, 500);
+        // }, 500);
         }
         
       }

@@ -6,14 +6,19 @@ import FilterIcon from "../../Home_images/Filter Icon.svg";
 import {  useSelector } from "react-redux";
 import PostedJobSlice from "../../components/postedJobSlice/PostedJobSlice.jsx";
 import JobDescriptionCard from "../../components/jobDescriptionCard/JobDescriptionCard.js";
+import "./JobsPosted.scss";
+import ListIcon from "../../Home_images/list.svg";
+import StatusIcon from "../../Home_images/status.svg";
+import AppliedUsersCard from "../../components/appliedUsersCard/AppliedUsersCard.jsx";
+import { useLocation } from "react-router-dom";
 const JobsPosted = () => {
     // const { jobsPosted } = useSelector((state) => state.user);
     // const {userLoading} = useSelector((state) => state.user);
+    const location = useLocation();
     const {user} = useSelector((state) => state.user)
-  
-  const [filter, setFilters] = useState("none");
-  const [showFilters, setShowFilters] = useState(false);
-  const [selectedJob, setSelectedJob] = useState(user.jobsPosted[0]?.jobId);
+  const jobsPosted = user.jobsPosted
+    const [isStatus, setIsStatus] = useState(false);
+    const [selectedJob, setSelectedJob] = useState(jobsPosted[0]?.jobId);
   useEffect(() => {
       // console.log(user);
       // console.log(userLoading);
@@ -26,109 +31,87 @@ const JobsPosted = () => {
         <>
           {/* <NavbarProfile /> */}
           <hr />
-          <div className="nav">
-            <div className="filters">
-              <p>
-                <img src={DownArrow} alt="" />
-                <span>Nearby Jobs</span>
-              </p>
-              <p
-                onClick={() => {
-                  setShowFilters(true);
-                }}
-              >
-                <img src={FilterIcon} alt="" />
-                <span>Filter</span>
-              </p>
-              {showFilters && (
-                <div>
-                  <button
-                    onClick={() => {
-                      setFilters("area");
-                      setShowFilters(false);
-                    }}
-                  >
-                    area
-                  </button>
-                  <button
-                    onClick={() => {
-                      setFilters("city");
-                      setShowFilters(false);
-                    }}
-                  >
-                    city
-                  </button>
-                  <button
-                    onClick={() => {
-                      setFilters("state");
-                      setShowFilters(false);
-                    }}
-                  >
-                    state
-                  </button>
-                  <button
-                    onClick={() => {
-                      setFilters("none");
-                      setShowFilters(false);
-                    }}
-                  >
-                    none
-                  </button>
-                </div>
-              )}
-              {filter !== "none1" ? (
-                <span>
-                  <span>{filter}</span>{" "}
-                  <button
-                    onClick={() => {
-                      setFilters("none1");
-                      setShowFilters(true);
-                      setSelectedJob(-1);
-                    }}
-                  >
-                    Clear filters
-                  </button>
-                </span>
-              ) : (
-                <span></span>
-              )}
-            </div>
-            <div >
-              
-            </div>
+          <div className="navPostedJobs">
+        <div className="filtersPostedJobs">
+          <p>
+            <img src={DownArrow} alt="" />
+            <span>Posted Jobs</span>
+          </p>
+        </div>
+        <span className="span1">
+          <img
+            className="img1"
+            src={ListIcon}
+            alt=""
+            onClick={() => {
+              setIsStatus(false);
+            }}
+          />
+          <img
+            className="img1"
+            src={StatusIcon}
+            alt=""
+            onClick={() => {
+              setIsStatus(true);
+            }}
+          />
+        </span>
+      </div>
+      <div className="profile parallel">
+        <div className="left">
+          {jobsPosted?.map((job, index) => {
+            {
+              return (
+                <PostedJobSlice
+                  key={index}
+                  title={job.title}
+                  cN={job.jobId === selectedJob ? `borderGreen` : undefined}
+                  onClick={() => {
+                    setSelectedJob((prev) => {
+                      console.log("x");
+                      return job.jobId;
+                    });
+                  }}
+                />
+              );
+            }
+          })}
+        </div>
+        {isStatus ? (
+          <div className="right">
+            {jobsPosted?.map((job, index) => {
+              if (job.jobId === selectedJob) {
+                return (
+                  <JobDescriptionCard
+                    key={index}
+                    title={job.title}
+                    description={job.longDesc}
+                    url={location.pathname}
+                    status={job.status}
+                    price={job.price}
+                  />
+                );
+              }
+            })}
           </div>
-          <div className="profile parallel">
-            {console.log(user.jobsPosted)}
-                  <div className="left">
-                    {user.jobsPosted?.map((job, index) => {
-                      if (
-                        (filter === "area" && job.creator.email !== user.email &&
-                          user.address.area === job.jobLocation.area) ||
-                        (filter === "city" && job.creator.email !== user.email &&
-                          user.address.city === job.jobLocation.city) ||
-                        (filter === "state" && job.creator.email !== user.email &&
-                          user.address.state === job.jobLocation.state) ||
-                          (filter === 'none')
-                      ) {
-                        return (
-                          <PostedJobSlice key={index} title={job.title} cN={job.jobId === selectedJob ? `borderGreen` : undefined}
-                          onClick={() => {
-                            setSelectedJob((prev)=>{return job.jobId})
-                            }}/>
-                        );
-                      }
-                    })}
-                  </div>
-                  <div className="right">
-                    {user.jobsPosted?.map((job, index) => {
-                      if (job.jobId === selectedJob) {
-                        return (
-                            <JobDescriptionCard key={index} title={job.title}/>
-                        );
-                      }
-                    })}
-                  </div>
+        ) : (
+          <div>
+            {jobsPosted?.map((job, index) => {
+              if (job.jobId === selectedJob) {
+                return (
+                  <AppliedUsersCard
+                    key={index}
+                    assignedUser={job.assignedUser}
+                    userList={job.appliedUsers}
+                    status={job.status}
+                    jobId={job.jobId}
+                  />
+                );
+              }
+            })}
           </div>
+        )}
+      </div>
         </>
       );
     };

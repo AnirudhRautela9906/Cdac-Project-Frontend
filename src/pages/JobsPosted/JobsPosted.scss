@@ -1,0 +1,30 @@
+.navPostedJobs{
+    display: flex;
+    justify-content: space-between;
+    .span1{
+      display: flex;
+      width: 90px;
+      justify-content: space-between;
+      margin-top: 16px;
+      .img1{
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+    .filtersPostedJobs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      p {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 50px;
+        padding: 5px 20px;
+      }
+      
+    }
+    
+  

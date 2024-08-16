@@ -93,6 +93,7 @@ export const userReducer = (state = { user: {} }, action) => {
             ...state,
             loading:false,
             isAuthenticated: true,
+            isLoggedIn:true,
             user : action.payload,
             Name: action.payload.name 
         }
@@ -102,7 +103,7 @@ export const userReducer = (state = { user: {} }, action) => {
                 loading:false,
                 isAuthenticated:false,
                 user:null,
-                isloggedOut:action.payload
+                isloggedOut:true
             }
 
 

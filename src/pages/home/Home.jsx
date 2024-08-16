@@ -6,13 +6,17 @@ import Footer from '../../components/footer/Footer'
 import Navbar from '../../components/navbar/Navbar.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Loading from "../../components/loading/LoadingSpinner.js"
 const Home = () => {
   const nav = useNavigate();
-   const {isAuthenticated} = useSelector(state => state.user);
+   const {isAuthenticated,loading} = useSelector(state => state.user);
    useEffect(() => {
     if (isAuthenticated) {
       nav("/profile");
     }
+    // if(loading){
+    //   loading=!loading
+    // }
     else if(!isAuthenticated)
       nav('/')
   }, [isAuthenticated, nav]);
@@ -20,7 +24,11 @@ const Home = () => {
     
   return (
     <>
-    {  /* <Navbar /> */}
+    {  loading ? <div>
+      {/* No Jobs Found */}
+      <Loading/>
+     </div> :
+     <>
     <hr />
     <p className='p1'>Why to worry when a Seeker is Ready !!</p>
     
@@ -44,6 +52,8 @@ const Home = () => {
     </div>  
     
     <Footer />
+    </>
+}
     </>
   )
 }

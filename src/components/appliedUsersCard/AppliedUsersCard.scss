@@ -1,0 +1,58 @@
+.user-assign-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: rows;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0;
+  width: 700px;
+}
+
+.user-info {
+  flex-grow: 1;
+  font-size: 18px;
+  font-weight: bold;
+}
+.svg{
+  width: 20px;
+  height: 20px;
+}
+.assign-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.assign-button:hover {
+  background-color: #0056b3;
+}
+
+.message{
+  font-size: 16px;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.assigned-button {
+  background-color: #FFB800;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.completed-button {
+  background-color: #21B414;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+}
