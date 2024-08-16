@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import logo from "../../Home_images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import { useEffect,  useRef,useState } from "react";
-import { useSelector,useDispatch } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/userActions";
 import "./RightSlider.css";
 import "./NotificationBell.css";
 import "./Navbar.scss";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 
 const Navbar = () => {
@@ -16,28 +16,37 @@ const Navbar = () => {
   const [activeLog, setActiveLog] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const {error,user,  isloggedOut,loading,isAuthenticated,isLoggedIn,Name } = useSelector((state) => state.user);
+  const {
+    error,
+    user,
+    isloggedOut,
+    loading,
+    isAuthenticated,
+    isLoggedIn,
+    Name,
+  } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (location.pathname === "/" || location.pathname === "/About" || location.pathname === "/Contact" ) {
+    if (
+      location.pathname === "/" ||
+      location.pathname === "/About" ||
+      location.pathname === "/Contact"
+    ) {
       setActiveLogSign(true);
-    }
-    else{
+    } else {
       setActiveLogSign(false);
     }
     if (location.pathname === "/Signup") {
       setActiveLog(true);
-    }
-    else{
+    } else {
       setActiveLog(false);
     }
-    if(isLoggedIn)
-      {
-        toast.success(`Welcome ${Name}`);
-        
-        // setTimeout(() => {
+    if (isLoggedIn) {
+      toast.success(`Welcome ${Name}`);
+
+      // setTimeout(() => {
       // }, 500);
-      }
+    }
   }, [location.pathname, isLoggedIn, Name]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -46,6 +55,9 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const toggleSlider = () => {
     setIsOpen(!isOpen);
+  };
+  const closeSlider = () => {
+    setIsOpen(false);
   };
 
   const messageBoxRef = useRef(null);
@@ -73,6 +85,10 @@ const Navbar = () => {
     toggleSlider();
     nav("/profile");
   }
+  function loadTransaction() {
+    toggleSlider();
+    nav("/TransactionTable");
+  }
   function logoutUser() {
     toggleSlider();
     dispatch(logout());
@@ -89,48 +105,53 @@ const Navbar = () => {
     //   toast.error(error);
     //   dispatch({ type: LOGIN_REQUEST });
     // }
-    //  else 
+    //  else
     if (isloggedOut) {
       toast.success("SEE YOU SOON");
     }
   }, [dispatch, error, isloggedOut, isNotiOpen]);
 
-
   return (
     <>
       {/* {!loading && <div className="nav1"> */}
-      {<div className="nav1">
-        <div className="nav1-1">
-          <img
-            src={logo}
-            alt=""
-            onClick={() => {
-              navigate("/");
-            }}
-          />{" "}
-          <Link to="/About">About</Link>
-          <Link to="/Contact">Contact</Link>
-        </div>
-        {activeLogSign && !isAuthenticated && (
-          <div className="nav1-2">
-            <Link to="/Login">Log in</Link>
-            <Link to="/Signup">Sign Up</Link>
-          </div>
-        )}
-        {activeLog &&
-          <div className="nav">
-            <button
-            onClick={() => {
-              navigate("/Login");
-            }}
-          >
-            Log in
-          </button>
-          </div>
-        }
       {
-        isAuthenticated &&<div>
-          <div className="notification-container">
+        <div className="nav1">
+          <div className="nav1-1">
+            <img
+              src={logo}
+              alt=""
+              onClick={() => {
+                closeSlider();
+                navigate("/");
+              }}
+            />{" "}
+            <Link to="/About" onClick={closeSlider}>
+              About
+            </Link>
+            <Link to="/Contact" onClick={closeSlider}>
+              Contact
+            </Link>
+          </div>
+          {activeLogSign && !isAuthenticated && (
+            <div className="nav1-2">
+              <Link to="/Login">Log in</Link>
+              <Link to="/Signup">Sign Up</Link>
+            </div>
+          )}
+          {activeLog && (
+            <div className="nav">
+              <button
+                onClick={() => {
+                  navigate("/Login");
+                }}
+              >
+                Log in
+              </button>
+            </div>
+          )}
+          {isAuthenticated && (
+            <div>
+              {/* <div className="notification-container">
             <button onClick={toggleMessageBox} className="notification-bell">
               🔔
             </button>
@@ -145,43 +166,46 @@ const Navbar = () => {
                 </ul>
               </div>
             )}
-          </div>
-          <button onClick={toggleSlider} className="open-slider-btn profilePic">
-            {user.name}
-          </button>
+          </div> */}
+              <div onClick={toggleSlider} className="open-slider-btn">
+                <div className="boxProfile">
+                  <div className="glow-text">Anirudh</div>
+                </div>
+              </div>
 
-          <div className={`slider ${isOpen ? "open" : ""}`}>
-            <button onClick={toggleSlider} className="toggle-button">
-              {isOpen ? "Close Slider" : "Open Slider"}
-            </button>
+              <div className={`slider ${isOpen ? "open" : ""}`}>
+                <button onClick={toggleSlider} className="toggle-button">
+                  {isOpen ? "Close Slider" : "Open Slider"}
+                </button>
 
-            <div className={`slider ${isOpen ? "open" : ""}`}>
-              <button className="slider-button" onClick={toggleSlider}>
-                x
-              </button>
-              {/* <button className="slider-button" onClick={toggleSlider}>
+                <div className={`slider ${isOpen ? "open" : ""}`}>
+                  <button className="slider-button" onClick={toggleSlider}>
+                    x
+                  </button>
+                  {/* <button className="slider-button" onClick={toggleSlider}>
                 Account
               </button> */}
-              <button className="slider-button" onClick={loadHome}>
-                Home
-              </button>
-              <button className="slider-button" onClick={loadJobsPosted}>
-                Jobs Posted
-              </button>
-              <button className="slider-button" onClick={toggleSlider}>
-                Jobs Applied
-              </button>
-                <button className="slider-button" onClick={toggleSlider}>
-                Transaction History
-              </button>
-              <button className="slider-button" onClick={logoutUser}>
-                Logout
-              </button>
+                  <button className="slider-button" onClick={loadHome}>
+                    Home
+                  </button>
+                  <button className="slider-button" onClick={loadJobsPosted}>
+                    Jobs Posted
+                  </button>
+                  <button className="slider-button" onClick={toggleSlider}>
+                    Jobs Applied
+                  </button>
+                  <button className="slider-button" onClick={loadTransaction}>
+                    Transaction History
+                  </button>
+                  <button className="slider-button" onClick={logoutUser}>
+                    Logout
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>}
-      </div>
-}
+          )}
+        </div>
+      }
     </>
   );
 };

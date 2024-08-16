@@ -96,6 +96,7 @@ export const userReducer = (state = { user: {} }, action) => {
             isLoggedIn:true,
             user : action.payload,
             Name: action.payload.name 
+            
         }
 
         case LOGOUT_SUCCESS:

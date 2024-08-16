@@ -1,84 +1,86 @@
 .job-card-description {
-    width: 100%;
-    border: 2px solid black;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 15px;
-    padding: 10px;
-    .job-title {
-      font-size: 35px;
-      margin-top: 5px;
-      font-family: Poppins, sans-serif;
-      font-weight: 600;
-      text-decoration: none;
-      &:hover {
-        text-decoration-line: underline;
-      }
-    }
-    .job-desc{
-      font-size: 18px;
-    }
-    .job-description {
-      width: 90%;
-      height: 20px;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-family: Poppins, sans-serif;
-      font-size: 20px;
-      line-height: 1.2;
-      color: #333;
-      resize: none;
-      overflow: hidden;
-      caret-color: transparent;
-    }
-    .job-images{
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-  
-      .img {
-          width: 25%;
-          height: auto;
-          border-radius: 10px;
-          margin: 20px;
-        }
-    }
-    
-    .job-footer {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 10px;
-      width: 100%;
-      .job-apply {
-          color: white;
-          border: 2px solid black;
-          background-color: #0073E6;
-          width: 140px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 100px;
-          padding: 5px 20px;
-          height: 40px;
-          cursor: pointer;
-      }
-      .job-coins {
-          color: white;
-          border: 2px solid black;
-          background-color: #26B414;
-          width: 140px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 100px;
-          padding: 5px 20px;
-          height: 40px;
-      }
+  width: 100%;
+  border: 2px solid black;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+  padding: 10px;
+  .job-title {
+    font-size: 35px;
+    margin-top: 5px;
+    font-family: Poppins, sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    &:hover {
+      text-decoration-line: underline;
     }
   }
+  .job-desc{
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .job-description {
+    width: 90%;
+    height: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Poppins, sans-serif;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #333;
+    resize: none;
+    overflow: hidden;
+    caret-color: transparent;
+  }
+  .job-images{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .img {
+        width: 25%;
+        height: auto;
+        border-radius: 10px;
+        margin: 20px;
+      }
+  }
   
+  .job-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    .job-apply {
+        color: white;
+        border: 2px solid black;
+        background-color: #0073E6;
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        padding: 5px 20px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .job-coins {
+        color: white;
+        border: 2px solid black;
+        background-color: #26B414;
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100px;
+        padding: 5px 20px;
+        height: 40px;
+    }
+  }
+}

@@ -39,28 +39,22 @@ const JobsPosted = () => {
           </p>
         </div>
         <span className="span1">
-          <img
-            className="img1"
-            src={ListIcon}
-            alt=""
-            onClick={() => {
-              setIsStatus(false);
-            }}
-          />
-          <img
-            className="img1"
-            src={StatusIcon}
-            alt=""
-            onClick={() => {
-              setIsStatus(true);
-            }}
-          />
-        </span>
+            <div className="filtersPostedJobs">
+              <p>
+                <span onClick={()=>{setIsStatus(false)}}>List of Applied Users</span>
+              </p>
+            </div>
+            <div className="filtersPostedJobs">
+              <p>
+                <span onClick={()=>{setIsStatus(true)}}>Check Job Status</span>
+              </p>
+            </div>
+            </span>
       </div>
       <div className="profile parallel">
         <div className="left">
           {jobsPosted?.map((job, index) => {
-            {
+            
               return (
                 <PostedJobSlice
                   key={index}
@@ -74,7 +68,7 @@ const JobsPosted = () => {
                   }}
                 />
               );
-            }
+            
           })}
         </div>
         {isStatus ? (
@@ -83,12 +77,12 @@ const JobsPosted = () => {
               if (job.jobId === selectedJob) {
                 return (
                   <JobDescriptionCard
-                    key={index}
-                    title={job.title}
-                    description={job.longDesc}
-                    url={location.pathname}
-                    status={job.status}
-                    price={job.price}
+                  key={index}
+                  title={job.title}
+                  description={job.longDesc}
+                  url={location.pathname}
+                  status={job.status}
+                  price={job.price}
                   />
                 );
               }
